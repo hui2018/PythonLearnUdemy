@@ -65,6 +65,26 @@ class Solution:
                 return answer
         return answer
 
+    def isValid(self,s):
+        stack = []
+        for x in range(len(s)):
+            if(s[x] == '(' or s[x] == '[' or s[x] == '{'):
+                stack.append(s[x])
+                continue
+            else:
+                check = stack.pop()
+                if(check == '{' and s[x] =='}'):
+                    continue
+                elif(check == '(' and s[x] ==')'):
+                    continue
+                elif(check == '[' and s[x] ==']'):
+                    continue
+                else:
+                    return False
+        if len(stack) == 0:
+            return True
+        else:
+            return False
 
 if __name__ == "__main__":
     a = Solution()
@@ -79,6 +99,14 @@ if __name__ == "__main__":
     array = [1,2,2,2,2,3,4,7,8,8]
     x = 2
     print(a.getRange(array, x))
+
+    #isValid parentheses
+    s = "()(){(())" #false
+    print(a.isValid(s))
+    s = "" #true
+    print(a.isValid(s))
+    s = "([{}])()" #true
+    print(a.isValid(s))
 
     #adding two linked list
     #2->4->3 + 5->6->8 = 7->0->2->1
