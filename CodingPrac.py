@@ -53,21 +53,41 @@ class Solution:
         else:
             return n * self.thisTi(n - 1)
 
+    def getRange(self, arr, target):
+        answer = [None] * 2
+        for x in range(len(arr)):
+            if(target == arr[x]):
+                if(answer[0] is None):
+                    answer[0] = x
+                    continue
+                answer[1] = x
+            elif(answer[0] != None and answer[1] != None):
+                return answer
+        return answer
+
+
 if __name__ == "__main__":
     a = Solution()
 
+    #print length of longest substring
     a.lengthOfLongestSubString('abrkaabcdefghijjxxx')
+
+    #fibonacci number
     print(a.thisTi(5))
 
+    #first and last indices of an element
+    array = [1,2,2,2,2,3,4,7,8,8]
+    x = 2
+    print(a.getRange(array, x))
+
+    #adding two linked list
+    #2->4->3 + 5->6->8 = 7->0->2->1
     l1 = ListNodes(2)
     l1.next = ListNodes(4)
     l1.next.next = ListNodes(3)
-
     l2 = ListNodes(5)
     l2.next = ListNodes(6)
     l2.next.next = ListNodes(8)
-
-
     result = a.addingNumbers(l1,l2)
     while result:
         print(result.val)
