@@ -86,6 +86,17 @@ class Solution:
         else:
             return False
 
+    def twoSum(self, list, k):
+        hashMap = {}
+        for a in range(len(list)):
+            if k-list[a] in hashMap:
+                return True
+            hashMap[list[a]] = a
+
+        return False
+
+
+
 if __name__ == "__main__":
     a = Solution()
 
@@ -120,3 +131,8 @@ if __name__ == "__main__":
     while result:
         print(result.val)
         result = result.next
+
+    #two sum
+    print(a.twoSum([4, 7, 1, -3, 2], 0))
+    print(a.twoSum([4, 7, 1, -3, 2], 6))
+    print(a.twoSum([4, 7, 1, -3, 2], 8))
