@@ -95,7 +95,17 @@ class Solution:
 
         return False
 
-
+    def stairs(self, k):
+        if k<3:
+            return k
+        current = 0
+        pre1 = 1
+        pre2 = 2
+        for i in range(2, k):
+            current = pre1+pre2
+            pre1 = pre2
+            pre2 = current
+        return current
 
 if __name__ == "__main__":
     a = Solution()
@@ -136,3 +146,6 @@ if __name__ == "__main__":
     print(a.twoSum([4, 7, 1, -3, 2], 0))
     print(a.twoSum([4, 7, 1, -3, 2], 6))
     print(a.twoSum([4, 7, 1, -3, 2], 8))
+
+    print(a.stairs(4))
+    print(a.stairs(5))
