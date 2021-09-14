@@ -107,27 +107,40 @@ class Solution:
             pre2 = current
         return current
 
+    def traverseGrid(self,n,m):
+        grid = [[0]*n]*m
+
+        for i in range(0, n):
+            for j in range(0, m):
+                if i == 0 or j == 0:
+                    grid[i][j] = 1
+                    continue
+                else:
+                    grid[i][j] = grid[i-1][j] + grid[i][j-1]
+        return grid[n-1][m-1]
+
 if __name__ == "__main__":
     a = Solution()
 
+
     #print length of longest substring
-    a.lengthOfLongestSubString('abrkaabcdefghijjxxx')
+    #a.lengthOfLongestSubString('abrkaabcdefghijjxxx')
 
     #fibonacci number
-    print(a.thisTi(5))
+    #print(a.thisTi(5))
 
     #first and last indices of an element
-    array = [1,2,2,2,2,3,4,7,8,8]
-    x = 2
-    print(a.getRange(array, x))
+    #array = [1,2,2,2,2,3,4,7,8,8]
+    #x = 2
+    #print(a.getRange(array, x))
 
     #isValid parentheses
-    s = "()(){(())" #false
-    print(a.isValid(s))
-    s = "" #true
-    print(a.isValid(s))
-    s = "([{}])()" #true
-    print(a.isValid(s))
+    #s = "()(){(())" #false
+    #print(a.isValid(s))
+    #s = "" #true
+    #print(a.isValid(s))
+    #s = "([{}])()" #true
+    #print(a.isValid(s))
 
     #adding two linked list
     #2->4->3 + 5->6->8 = 7->0->2->1
@@ -137,15 +150,19 @@ if __name__ == "__main__":
     l2 = ListNodes(5)
     l2.next = ListNodes(6)
     l2.next.next = ListNodes(8)
-    result = a.addingNumbers(l1,l2)
-    while result:
-        print(result.val)
-        result = result.next
+    #result = a.addingNumbers(l1,l2)
+    #while result:
+        #print(result.val)
+        #result = result.next
 
     #two sum
-    print(a.twoSum([4, 7, 1, -3, 2], 0))
-    print(a.twoSum([4, 7, 1, -3, 2], 6))
-    print(a.twoSum([4, 7, 1, -3, 2], 8))
+    #print(a.twoSum([4, 7, 1, -3, 2], 0))
+    #print(a.twoSum([4, 7, 1, -3, 2], 6))
+    #print(a.twoSum([4, 7, 1, -3, 2], 8))
 
-    print(a.stairs(4))
-    print(a.stairs(5))
+    #print(a.stairs(4))
+    #print(a.stairs(5))
+
+    print(a.traverseGrid(2,2))
+    print(a.traverseGrid(3, 3))
+    print(a.traverseGrid(5, 5))
