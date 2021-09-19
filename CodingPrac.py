@@ -119,6 +119,19 @@ class Solution:
                     grid[i][j] = grid[i-1][j] + grid[i][j-1]
         return grid[n-1][m-1]
 
+    def viewScene(self, intArray):
+        answer = 0
+        flag = True
+        for i in range(0, len(intArray)):
+            for j in range(i+1,len(intArray)):
+                if intArray[i] < intArray[j]:
+                    flag = False
+                    continue
+            if flag:
+                answer+=1
+            flag = True
+        return answer
+
 if __name__ == "__main__":
     a = Solution()
 
@@ -163,6 +176,10 @@ if __name__ == "__main__":
     #print(a.stairs(4))
     #print(a.stairs(5))
 
-    print(a.traverseGrid(2,2))
-    print(a.traverseGrid(3, 3))
-    print(a.traverseGrid(5, 5))
+    #num ways to get to end point
+    #print(a.traverseGrid(2,2))
+    #print(a.traverseGrid(3, 3))
+    #print(a.traverseGrid(5, 5))
+
+    #see over people
+    print(a.viewScene([3,6,3,4,1,5,3,2]))
